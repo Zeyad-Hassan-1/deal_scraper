@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Cloudflare
+cloudflared*
+*.log
+tunnel.log
+
+# Project specific
+data/
+Egy_stores/data/
+chat_states.json
+*.zip
+azure_deploy.zip
+
+# IDEs
+.vscode/
+.DS_Store

@@ -1,0 +1,8 @@
+{
+  "venvPath": "/home/zezo/Desktop/web_scraping/ecommerse_project",
+  "venv": "venv",
+  "pythonVersion": "3.12",
+  "extraPaths": [
+    "Egy_stores/scrapers"
+  ]
+}
