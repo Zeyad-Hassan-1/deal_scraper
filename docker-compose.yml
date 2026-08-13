@@ -11,14 +11,24 @@ services:
       - ./n8n_data:/home/node/.n8n
       - .:/project
     environment:
-      - N8N_HOST=${SUBDOMAIN:-localhost}
+      - N8N_HOST=exciting-hopefully-joey.ngrok-free.app
       - N8N_PORT=5678
-      - N8N_PROTOCOL=http
+      - N8N_PROTOCOL=https
       - NODE_ENV=production
-      - WEBHOOK_URL=https://${SUBDOMAIN}/
+      - WEBHOOK_URL=https://exciting-hopefully-joey.ngrok-free.app/
       - GENERIC_TIMEZONE=Africa/Cairo
-      - PROXY_URL=http://scraperapi:fbc96f6bf5b7cded47f5cb9299277ba5@proxy-server.scraperapi.com:8001
+      - PROXY_URL=${PROXY_URL}
       - NODES_EXCLUDE=[]
       - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false
       - N8N_RESTRICT_FILE_ACCESS_TO=
+
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: ngrok-tunnel
+    restart: always
+    environment:
+      - NGROK_AUTHTOKEN=31tQxih8gFahRxwp5Ny1xXjcYjk_5eyT1QQQ4DdComTWUtnMc
+    command: "http --domain=exciting-hopefully-joey.ngrok-free.app n8n:5678"
+    depends_on:
+      - n8n
